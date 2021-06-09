@@ -4,10 +4,22 @@ const PORT = 4000;
 
 const app = express();
 
-const handleHome = () => console.log("Somebody is trying to go home.")
+const gossipMiddleware = (req, res, next) => {
+    console.log(`Someone is going to :${req.url}`);
+    next();
+}
+
+const handleHome = (req, res) => {
+    return res.send("<h1>I still love you</h1>");
+}
+const handleLogin = (req, res) => {
+    return res.send("Login here");
+}
+
 
 //application 설정
-// app.get("/", handleHome);
+app.get("/", gossipMiddleware, handleHome);
+app.get("/login", handleLogin);
 
 
 //외부접속 listen
