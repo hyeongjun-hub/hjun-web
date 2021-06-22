@@ -1,26 +1,18 @@
 import express from "express";
 import morgan from "morgan";
+import globalRouter from "./routers/globalRouter";
+import videoRouter from "./routers/videoRouter";
+import userRouter from "./routers/userRouter";
 
 const PORT = 4000;
 
 const app = express();
 const logger = morgan("dev");
-
-// const loggermid = (req, res, next) => {
-//     console.log(`METHOD ${req.method} ${req.path}`);
-//     next();
-// };
-
-const handleHome = (req, res) => {
-    return res.send("<h1>I still love you</h1>");
-};
-
-
-//application 설정
 app.use(logger);
-// app.use(loggermid);
-app.get("/", handleHome);
 
+app.use("/", globalRouter);
+app.use("/videos", videoRouter);
+app.use("/users", userRouter)
 
 //외부접속 listen
 const handleListening = () => 
