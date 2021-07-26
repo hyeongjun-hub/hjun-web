@@ -53,7 +53,7 @@ export const postUpload = async (req, res) => {
     console.log(error);
     return res.status(400).render("upload", {
       pageTitle: "Upload Video",
-      errorMessage: error._message,
+      errorMessage: error_message,
     });
   }
 };
