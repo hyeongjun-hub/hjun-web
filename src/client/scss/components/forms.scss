@@ -21,9 +21,17 @@ input:not(input[type="range"]) {
     color: rgba(255, 255, 255, 0.7);
   }
   margin-right: 20px;
+  &[type="submit"] {
+    margin-top: 20px;
+    border-radius: 5px;
+    padding: 12px 20px;
+    background-color: rgba($color: $red, $alpha: 0.9);
+    text-align: center;
+    cursor: pointer;
+    display: block;
+  }
 }
 
-input[type="submit"],
 .social__btn {
   border-radius: 5px;
   padding: 12px 20px;
