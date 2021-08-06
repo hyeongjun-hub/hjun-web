@@ -35,7 +35,7 @@ const handleDownload = async () => {
 
   await ffmpeg.run("-i", files.input, "-r", "60", files.output);
 
-  await ffmpeg.rund(
+  await ffmpeg.run(
     "-i",
     files.input,
     "-ss",

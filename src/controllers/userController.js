@@ -1,5 +1,4 @@
 import User from "../models/User";
-import Video from "../models/Video";
 import fetch from "node-fetch";
 import bcrypt from "bcrypt";
 
@@ -149,6 +148,7 @@ export const logout = (req, res) => {
   req.flash("info", "Bye Bye");
   return res.redirect("/");
 };
+
 export const getEdit = (req, res) => {
   return res.render("edit-profile", { pageTitle: "Edit Profile" });
 };
