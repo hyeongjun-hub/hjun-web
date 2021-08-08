@@ -48,3 +48,9 @@ input:not(input[type="range"]) {
   cursor: pointer;
   display: block;
 }
+
+#actionBtn {
+  padding: 8px 10px;
+  background-color: white;
+  color: black;
+}
