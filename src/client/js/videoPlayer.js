@@ -1,5 +1,3 @@
-const { default: fetch } = require("node-fetch");
-
 const video = document.querySelector("video");
 const playBtn = document.getElementById("play");
 const playBtnIcon = playBtn.querySelector("i");
@@ -13,6 +11,7 @@ const fullScreenBtn = document.getElementById("fullScreen");
 const fullScreenIcon = fullScreenBtn.querySelector("i");
 const videoContainer = document.getElementById("videoContainer");
 const videoControls = document.getElementById("videoControls");
+const textarea = document.querySelector("textarea");
 
 let controlsTimeout = null;
 let controlsMovementTimeout = null;
@@ -115,7 +114,15 @@ const handleEnded = () => {
   });
 };
 
-window.addEventListener("keydown", handleKeydown);
+document.addEventListener("keydown", handleKeydown);
+if (textarea) {
+  textarea.addEventListener("focus", () => {
+    document.removeEventListener("keydown", handleKeydown);
+  });
+  textarea.addEventListener("blur", () => {
+    document.addEventListener("keydown", handleKeydown);
+  });
+}
 video.addEventListener("click", handlePlayClick);
 playBtn.addEventListener("click", handlePlayClick);
 muteBtn.addEventListener("click", handleMuteClick);
