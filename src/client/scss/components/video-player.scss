@@ -1,8 +1,10 @@
 #videoContainer {
   width: 100%;
+  display: flex;
+  justify-content: center;
   position: relative;
   video {
-    width: 100%;
+    width: 92%;
   }
   .videoControls {
     opacity: 0;
@@ -13,8 +15,8 @@
     align-items: center;
     border-radius: 10px;
     position: absolute;
-    bottom: 100px;
-    width: 95%;
+    bottom: 15px;
+    width: 87%;
     left: 0;
     right: 0;
     margin: 0 auto;
@@ -24,15 +26,13 @@
     justify-content: space-between;
     background-color: #0f1117;
     padding: 10px;
+    padding-right: 15px;
     left: 0;
     box-sizing: border-box;
     .videoControls__play {
       display: flex;
       align-items: center;
       justify-content: space-around;
-      .videoControls__playBtn {
-        margin: 0px 15px;
-      }
       .videoControls__time {
         font-size: 12px;
       }
@@ -44,7 +44,15 @@
         margin-left: 10px;
         i {
           font-size: 20px;
+          margin-right: 5px;
+          cursor: pointer;
         }
+      }
+    }
+    .videoControls__fullScreen {
+      i {
+        margin-right: 10px;
+        cursor: pointer;
       }
     }
   }

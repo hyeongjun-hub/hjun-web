@@ -2,7 +2,6 @@
 .video-mixin {
   .video-mixin__thumb {
     height: 140px;
-    border-radius: 7px;
     width: 100%;
     background-color: ivory;
   }
@@ -14,6 +13,7 @@
       margin-top: 10px;
     }
     .video-mixin__meta {
+      color: rgba(255, 255, 255, 0.7);
       margin-top: 5px;
       font-size: 12px;
     }

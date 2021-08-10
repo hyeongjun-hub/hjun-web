@@ -6,6 +6,25 @@ header {
   .header__logo {
     color: $red;
     font-size: 38px;
+    display: inline-flex;
+    position: relative;
+    span {
+      margin-left: 3px;
+      display: flex;
+      align-items: center;
+      font-family: Roboto, Arial, sans-serif;
+      color: white;
+      font-weight: 700;
+      font-size: 30px;
+    }
+    #white {
+      margin-left: 2px;
+      background-color: inherit;
+      color: gray;
+      width: 15px;
+      height: 15px;
+      font-size: 12px;
+    }
   }
   ul {
     display: flex;

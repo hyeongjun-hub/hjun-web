@@ -2,7 +2,7 @@ extends base
 
 block content 
     div#videoContainer(data-id=video._id)
-        video(src="/" + video.fileUrl)
+        video(src="/" + video.fileUrl)#video
         div#videoControls.videoControls
             div.videoControls__play
                 span#play.videoControls__playBtn
@@ -16,29 +16,47 @@ block content
                 input(type="range",step="0.1", value=0.5, min="0", max="1")#volume
                 span#mute
                     i.fas.fa-volume-up
-            div    
+            div.videoControls__fullScreen
                 span#fullScreen
                     i.fas.fa-expand
-        
-        div
-            p=video.description 
-            small=video.createdAt
-        div 
-            small Uploaded by 
-                a(href=`/users/${video.owner._id}`)=video.owner.name
-        if String(video.owner._id) === String(loggedInUser._id)
-            a(href=`${video.id}/edit`) Edit Video &rarr;
-            br
-            a(href=`${video.id}/delete`) Delete Video &rarr;
+    div.videoInfoBox    
+        div.videoInfo
+            div.videoInfo__data
+                div.videoInfo__data-hash
+                    each hashtag in video.hashtags
+                        span #{hashtag } 
+                h1=video.title
+                div.videoInfo__data-meta
+                    h6 #{video.meta.views} views 
+                    span •
+                    small=video.createdAt
+            div.videoInfo__anch
+                div.videoInfo__anchBox
+                    if String(video.owner._id) === String(loggedInUser._id)
+                        a(href=`${video.id}/edit`) Edit Video 
+                        a(href=`${video.id}/delete`) Delete Video 
 
-    div.video__comments Comments..
+        div.videoInfo2
+            div.videoInfo2__owner
+                img(src="/"+`${video.owner.avatarUrl}`).small__avatar
+                div.videoInfo2__owner-link
+                    small Uploaded by 
+                    a(href=`/users/${video.owner._id}`)=video.owner.name
+            div.videoInfo2__para
+                p=video.description 
+                
+        
+
+    div.video__comments 
+        h1 Comments
         ul 
             each comment in video.comments.reverse()
                 li.video__comment(data-id=comment.id)
                     i.fas.fa-comment 
-                    span  #{comment.text}
-                    if String(comment.owner._id) === String(loggedInUser._id)
-                        span#delete-comment  ❌
+                    div.video__comment-text
+                        span#comment-text  #{comment.text}
+                        if String(comment.owner._id) === String(loggedInUser._id)
+                            h6#delete-comment  ❌
         if loggedIn
             div.video__add-comments 
                 form.video__comment-form#commentForm 
