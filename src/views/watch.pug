@@ -2,7 +2,10 @@ extends base
 
 block content 
     div#videoContainer(data-id=video._id)
-        video(src=video.fileUrl)#video
+        if isHeroku 
+            video(src=video.fileUrl)#video
+        else
+            video(src="/"+video.fileUrl)#video
         div#videoControls.videoControls
             div.videoControls__play
                 span#play.videoControls__playBtn
@@ -38,10 +41,13 @@ block content
 
         div.videoInfo2
             div.videoInfo2__owner
-                if isHeroku
-                    img(src=`${video.owner.avatarUrl}`).small__avatar
+                if !loggedInUser.avatarUrl
+                    span.small__avatar 😀
                 else 
-                    img(src="/"+`${video.owner.avatarUrl}`).small__avatar
+                    if isHeroku
+                        img(src=`${video.owner.avatarUrl}`).small__avatar
+                    else 
+                        img(src="/"+`${video.owner.avatarUrl}`).small__avatar
                 div.videoInfo2__owner-link
                     small Uploaded by 
                     a(href=`/users/${video.owner._id}`)=video.owner.name
