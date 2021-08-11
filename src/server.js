@@ -13,8 +13,13 @@ const app = express();
 const logger = morgan("dev");
 
 app.use((req, res, next) => {
-  res.header("Cross-Origin-Embedder-Policy", "require-corp");
-  res.header("Cross-Origin-Opener-Policy", "same-origin");
+  // res.header("Cross-Origin-Embedder-Policy", "require-corp");
+  // res.header("Cross-Origin-Opener-Policy", "same-origin");
+  res.header(
+    "Access-Control-Allow-Origin",
+    "https://hyeongjuntube.s3.ap-northeast-2.amazonaws.com"
+  );
+
   next();
 });
 app.set("view engine", "pug");
