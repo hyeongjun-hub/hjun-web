@@ -41,7 +41,7 @@ block content
 
         div.videoInfo2
             div.videoInfo2__owner
-                if !loggedInUser.avatarUrl
+                if !video.owner.avatarUrl
                     span.small__imoticon 😀
                 else 
                     if isHeroku
