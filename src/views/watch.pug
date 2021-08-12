@@ -24,7 +24,7 @@ block content
                     span#fullScreen
                         i.fas.fa-expand
     else 
-        div#imageContainer(data-id=video._id)
+        div#videoContainer(data-id=video._id).imageContainer
             if isHeroku 
                 img(src=video.thumbUrl)#video
             else
@@ -81,6 +81,7 @@ block content
                     button Add comment
 
 block scripts 
-    script(src="/static/js/videoPlayer.js")
+    if video.fileUrl
+        script(src="/static/js/videoPlayer.js")
     if loggedIn    
         script(src="/static/js/commentSection.js")
