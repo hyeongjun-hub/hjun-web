@@ -65,7 +65,7 @@ export const postUpload = async (req, res) => {
     const newVideo = await Video.create({
       title,
       description,
-      fileUrl: isHeroku ? video[0].location : video[0].path,
+      fileUrl: video ? (isHeroku ? video[0].location : video[0].path) : "",
       thumbUrl: isHeroku ? thumb[0].location : thumb[0].path,
       owner: _id,
       hashtags: Video.formatHashtags(hashtags),
@@ -73,6 +73,7 @@ export const postUpload = async (req, res) => {
     const user = await User.findById(_id);
     user.videos.push(newVideo._id);
     user.save();
+    req.flash("success", "video uploaded");
     return res.redirect("/");
   } catch (error) {
     console.log(error);
@@ -97,7 +98,7 @@ export const deleteVideo = async (req, res) => {
     return res.status(403).redirect("/");
   }
   await Video.findByIdAndDelete(id);
-  req.flash("error", "not authorized");
+  req.flash("success", "video deleted");
   return res.redirect("/");
 };
 
