@@ -57,8 +57,9 @@ export const postEdit = async (req, res) => {
 };
 
 export const getUpload = (req, res) => {
-  res.header("Cross-Origin-Embedder-Policy", "unsafe-none");
+  res.header("Cross-Origin-Embedder-Policy", "require-corp");
   res.header("Cross-Origin-Opener-Policy", "same-origin");
+  res.header("cross-origin-resource-policy", "cross-origin");
   return res.render("upload", { pageTitle: "Upload Video" });
 };
 
