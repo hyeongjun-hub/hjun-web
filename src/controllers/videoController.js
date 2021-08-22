@@ -59,7 +59,10 @@ export const postEdit = async (req, res) => {
 export const getUpload = (req, res) => {
   res.header("Cross-Origin-Embedder-Policy", "require-corp");
   res.header("Cross-Origin-Opener-Policy", "same-origin");
-  res.header("cross-origin-resource-policy", "cross-origin");
+  res.header(
+    "Access-Control-Allow-Origin",
+    "https://hyeongjuntube.s3.ap-northeast-2.amazonaws.com"
+  );
   return res.render("upload", { pageTitle: "Upload Video" });
 };
 
