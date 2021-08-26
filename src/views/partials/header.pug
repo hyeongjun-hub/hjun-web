@@ -21,7 +21,7 @@ header
                             span.header__imoticon 😀
                         else 
                             if isHeroku
-                                img.header__avatar(src=loggedInUser.avatarUrl,crossorigin)
+                                img.header__avatar(src=loggedInUser.avatarUrl)
                             else
                                 img.header__avatar(src="/"+loggedInUser.avatarUrl)
             else
