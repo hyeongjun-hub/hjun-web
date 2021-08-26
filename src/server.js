@@ -13,10 +13,7 @@ const app = express();
 const logger = morgan("dev");
 
 app.use((req, res, next) => {
-  res.header(
-    "Access-Control-Allow-Origin",
-    "https://hyeongjuntube.s3.amazonaws.com"
-  );
+  res.header("Access-Control-Allow-Origin", "*");
   next();
 });
 app.set("view engine", "pug");
