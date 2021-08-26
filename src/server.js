@@ -17,8 +17,6 @@ app.use((req, res, next) => {
     "Access-Control-Allow-Origin",
     "https://hyeongjuntube.s3.amazonaws.com"
   );
-  res.header("Cross-Origin-Embedder-Policy", "require-corp");
-  res.header("Cross-Origin-Opener-Policy", "same-origin");
   next();
 });
 app.set("view engine", "pug");
