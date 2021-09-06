@@ -34,8 +34,8 @@ body {
 
 main {
   max-width: 1200px;
-  width: 100vw;
-  margin: 0 10%;
+  width: 100vw !important;
+  margin: 0 10% !important;
 }
 
 @keyframes goAway {
