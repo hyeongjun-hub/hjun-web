@@ -10,6 +10,10 @@
     max-height: 150vh;
     overflow: auto;
   }
+  .otherVideos::-webkit-scrollbar {
+    width: 0;
+    background-color: $bg;
+  }
 }
 
 #videoContainer {
