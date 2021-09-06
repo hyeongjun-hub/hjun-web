@@ -1,3 +1,17 @@
+.biggestContainer {
+  display: flex;
+  width: 100%;
+  padding: 20px;
+  .mainContainer {
+    width: 70%;
+  }
+  .otherVideos {
+    width: 30%;
+    max-height: 100%;
+    overflow: auto;
+  }
+}
+
 #videoContainer {
   width: 100%;
   display: flex;
