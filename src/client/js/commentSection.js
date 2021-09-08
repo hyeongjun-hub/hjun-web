@@ -9,8 +9,10 @@ const addComment = (text, id, name, avatarUrl) => {
   newComment.className = "video__comment";
   newComment.dataset.id = id;
   const icon = document.createElement("div");
+  icon.className = "video__comment-icon";
   if (!avatarUrl) {
     const imoti = document.createElement("span");
+    imoti.className = "smaller__imoticon";
     imoti.innerText = "😀";
     icon.appendChild(imoti);
   } else {

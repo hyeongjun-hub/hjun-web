@@ -76,7 +76,7 @@ block content
                         li.video__comment(data-id=comment.id)
                             div.video__comment-icon
                                 if !comment.owner.avatarUrl
-                                    span.small__imoticon 😀
+                                    span.smaller__imoticon 😀
                                 else 
                                     if isHeroku
                                         img(src=`${comment.owner.avatarUrl}`).smaller__avatar

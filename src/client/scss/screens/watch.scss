@@ -82,6 +82,7 @@
   margin: 0 auto;
   margin-top: 20px;
   .video__comment {
+    position: relative;
     display: flex;
     align-items: center;
     margin-top: 20px;
@@ -92,7 +93,10 @@
     border: 0.1px solid rgba(255, 255, 255, 0.2);
     color: white;
     margin-bottom: 10px;
-
+    .video__comment-icon {
+      width: 55px;
+      height: 53px;
+    }
     .video__comment-box {
       position: relative;
       border-left: 0.5px solid rgba(255, 255, 255, 0.2);
