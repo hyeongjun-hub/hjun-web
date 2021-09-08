@@ -4,25 +4,42 @@ const videoComments = document.querySelector(".video__comments ul");
 const videoCommentArray = videoComments.querySelectorAll("#comment-text");
 const deleteBtns = videoComments.querySelectorAll("#delete-comment");
 
-const addComment = (text, id) => {
+const addComment = (text, id, name, avatarUrl) => {
   const newComment = document.createElement("li");
   newComment.className = "video__comment";
   newComment.dataset.id = id;
-  const icon = document.createElement("i");
-  icon.className = "fas fa-comment";
-  const newDiv = document.createElement("div");
-  newDiv.className = "video__comment-text";
+  const icon = document.createElement("div");
+  if (!avatarUrl) {
+    const imoti = document.createElement("span");
+    imoti.innerText = "😀";
+    icon.appendChild(imoti);
+  } else {
+    const image = document.createElement("img");
+    image.src = avatarUrl;
+    image.className = "smaller__avatar";
+    icon.appendChild(image);
+  }
+  const commentBox = document.createElement("div");
+  commentBox.className = "video__comment-box";
+  const ownerName = document.createElement("div");
+  ownerName.className = "ownerName";
+  ownerName.innerText = name;
+  commentBox.appendChild(ownerName);
+  const commentText = document.createElement("div");
+  commentText.className = "video__comment-text";
   const span = document.createElement("span");
   span.id = "comment-text";
   span.innerText = ` ${text}`;
-  const h6 = document.createElement("h6");
-  h6.innerText = "❌";
+  const h6 = document.createElement("i");
+  h6.className = "far fa-trash-alt";
+  h6.id = "delete-comment";
   h6.addEventListener("click", handleClick);
-  span.addEventListener("mouseover", handleMouse);
-  newDiv.appendChild(span);
-  newDiv.appendChild(h6);
+  // span.addEventListener("mouseover", handleMouse);
+  commentText.appendChild(span);
+  commentText.appendChild(h6);
+  commentBox.appendChild(commentText);
   newComment.appendChild(icon);
-  newComment.appendChild(newDiv);
+  newComment.appendChild(commentBox);
   videoComments.prepend(newComment); //가장 뒤에 추가
 };
 
@@ -43,8 +60,8 @@ const handleSubmit = async (event) => {
   });
   if (response.status === 201) {
     textarea.value = "";
-    const { newCommentId } = await response.json();
-    addComment(text, newCommentId);
+    const { newCommentId, name, avatarUrl } = await response.json();
+    addComment(text, newCommentId, name, avatarUrl);
   }
 };
 
@@ -53,7 +70,7 @@ if (form) {
 }
 
 const handleClick = async (e) => {
-  const parentComment = e.target.parentElement.parentElement;
+  const parentComment = e.target.parentElement.parentElement.parentElement;
   const commentId = parentComment.dataset.id;
   const response = await fetch(`/api/videos/${commentId}/comment`, {
     method: "delete",
@@ -63,27 +80,27 @@ const handleClick = async (e) => {
   }
 };
 
-const handleMouse = (e) => {
-  const commentDiv = e.target.parentElement;
-  const delBtn = commentDiv.childNodes[1];
-  delBtn.className = "showing";
-  setTimeout(() => {
-    delBtn.className = "";
-  }, 3000);
-};
+// const handleMouse = (e) => {
+//   const commentDiv = e.target.parentElement;
+//   const delBtn = commentDiv.childNodes[1];
+//   delBtn.className = "showing";
+//   setTimeout(() => {
+//     delBtn.className = "";
+//   }, 3000);
+// };
 
-videoCommentArray.forEach((comment) => {
-  comment.addEventListener("mouseover", handleMouse);
-});
+// videoCommentArray.forEach((comment) => {
+//   comment.addEventListener("mouseover", handleMouse);
+// });
 
 if (deleteBtns) {
   deleteBtns.forEach((deleteBtn) => {
-    deleteBtn.addEventListener("mouseover", (e) => {
-      e.target.className = "showing";
-      setTimeout(() => {
-        e.target.className = "";
-      }, 3000);
-    });
+    // deleteBtn.addEventListener("mouseover", (e) => {
+    //   e.target.className = "showing";
+    //   setTimeout(() => {
+    //     e.target.className = "";
+    //   }, 3000);
+    // });
     deleteBtn.addEventListener("click", handleClick);
   });
 }

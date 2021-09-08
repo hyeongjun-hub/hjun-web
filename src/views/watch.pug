@@ -72,13 +72,22 @@ block content
             div.video__comments 
                 h1 Comments
                 ul 
-                    each comment in video.comments.reverse()
+                    each comment in comments.reverse()
                         li.video__comment(data-id=comment.id)
-                            i.fas.fa-comment 
-                            div.video__comment-text
-                                span#comment-text  #{comment.text}
-                                if String(comment.owner._id) === String(loggedInUser._id)
-                                    h6#delete-comment  ❌
+                            div.video__comment-icon
+                                if !comment.owner.avatarUrl
+                                    span.small__imoticon 😀
+                                else 
+                                    if isHeroku
+                                        img(src=`${comment.owner.avatarUrl}`).smaller__avatar
+                                    else 
+                                        img(src="/"+`${comment.owner.avatarUrl}`).smaller__avatar
+                            div.video__comment-box
+                                div.ownerName=comment.owner.name
+                                div.video__comment-text
+                                    span#comment-text  #{comment.text}
+                                    if String(comment.owner._id) === String(loggedInUser._id)
+                                        i.far.fa-trash-alt#delete-comment
                 if loggedIn
                     div.video__add-comments 
                         form.video__comment-form#commentForm 

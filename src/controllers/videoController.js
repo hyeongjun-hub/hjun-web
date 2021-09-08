@@ -8,17 +8,25 @@ export const home = async (req, res) => {
     .populate("owner");
   return res.render("home", { pageTitle: "Home", videos });
 };
+
 export const watch = async (req, res) => {
   const { id } = req.params;
   const videos = await Video.find({}).populate("owner");
   const video = await Video.findById(id).populate("owner").populate("comments");
+  const comments = await Comment.find({ video: id }).populate("owner");
   if (!video) {
     return res.status(404).render("404", { pageTitle: "Video not found." });
   }
   video.meta.views += 1;
   await video.save();
-  return res.render("watch", { pageTitle: video.title, video, videos });
+  return res.render("watch", {
+    pageTitle: video.title,
+    video,
+    videos,
+    comments,
+  });
 };
+
 export const getEdit = async (req, res) => {
   const { id } = req.params;
   const {
@@ -142,9 +150,7 @@ export const createComment = async (req, res) => {
     body: { text },
     params: { id },
   } = req;
-
   const video = await Video.findById(id);
-
   if (!video) {
     return res.sendStatus(404);
   }
@@ -155,7 +161,11 @@ export const createComment = async (req, res) => {
   });
   video.comments.push(comment._id);
   video.save();
-  return res.status(201).json({ newCommentId: comment._id });
+  return res.status(201).json({
+    newCommentId: comment._id,
+    name: user.name,
+    avatarUrl: user.avatarUrl,
+  });
 };
 
 export const deleteComment = async (req, res) => {
