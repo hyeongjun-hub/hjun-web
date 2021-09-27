@@ -3,17 +3,6 @@ const form = document.getElementById("commentForm");
 const videoComments = document.querySelector(".video__comments ul");
 const videoCommentArray = videoComments.querySelectorAll("#comment-text");
 const deleteBtns = videoComments.querySelectorAll("#delete-comment");
-const mainContent = document.querySelector(".mainContainer");
-const sidebar = document.querySelector(".otherVideos");
-
-const mainContentHeight = mainContent.offsetHeight;
-console.log(mainContentHeight);
-const sidebarHeight = sidebar.offsetHeight;
-console.log(sidebarHeight);
-
-if (mainContentHeight !== sidebarHeight) {
-  sidebar.style.height = mainContentHeight + "px";
-}
 
 const addComment = (text, id, name, avatarUrl) => {
   const newComment = document.createElement("li");
