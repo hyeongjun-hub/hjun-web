@@ -5,7 +5,8 @@ import Comment from "../models/Comment";
 export const home = async (req, res) => {
   const videos = await Video.find({})
     .sort({ createdAt: "desc" })
-    .populate("owner");
+    .populate("owner")
+    .populate("comments");
   return res.render("home", { pageTitle: "Home", videos });
 };
 

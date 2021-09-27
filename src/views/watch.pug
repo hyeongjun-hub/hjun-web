@@ -64,13 +64,12 @@ block content
                         div.videoInfo2__owner-link
                             small Uploaded by 
                             a(href=`/users/${video.owner._id}`)=video.owner.name
-                    div.videoInfo2__para
-                        p=video.description 
+                    div.videoInfo2__para=video.description 
                         
             
 
             div.video__comments 
-                h1 Comments
+                h1 #{video.comments.length} Comments
                 ul 
                     each comment in comments.reverse()
                         li.video__comment(data-id=comment.id)

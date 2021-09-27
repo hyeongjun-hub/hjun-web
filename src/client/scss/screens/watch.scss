@@ -65,7 +65,10 @@
       }
     }
     .videoInfo2__para {
-      width: 100%;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: normal;
+      max-width: 70%;
       padding: 20px;
       margin-left: 70px;
     }
