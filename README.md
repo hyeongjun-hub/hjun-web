@@ -1,17 +1,17 @@
 # Wetube Reloaded
 # https://wetube-hyeongjun.herokuapp.com/
 
-/ -> Home
-/join -> Join
-/login -> Login
-/search -> Search
-
-/users/:id -> See user
-/users/logout -> Log Out
-/users/edit -> Edit MY Profile
-/users/delete -> Delete MY user
-
-/videos/:id -> Watch Video
-/videos/:id/edit -> Edit Video
-/videos/:id/delete -> Delete Video
-/videos/upload -> Upload Video
+/ -> Home <br>
+/join -> Join <br>
+/login -> Login <br>
+/search -> Search <br>
+<br> <br>
+/users/:id -> See user <br>
+/users/logout -> Log Out <br>
+/users/edit -> Edit MY Profile<br>
+/users/delete -> Delete MY user <br>
+<br><br>
+/videos/:id -> Watch Video<br>
+/videos/:id/edit -> Edit Video<br>
+/videos/:id/delete -> Delete Video<br>
+/videos/upload -> Upload Video<br>
