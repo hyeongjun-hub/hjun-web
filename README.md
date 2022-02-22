@@ -1,6 +1,7 @@
 # Wetube Reloaded
-# https://wetube-hyeongjun.herokuapp.com/
-
+## 주소: https://wetube-hyeongjun.herokuapp.com/
+---
+### api 설계
 / -> Home <br>
 /join -> Join <br>
 /login -> Login <br>
