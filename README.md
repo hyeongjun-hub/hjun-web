@@ -1,15 +1,21 @@
 # Wetube Reloaded
-## 주소: https://wetube-hyeongjun.herokuapp.com/
-## 사용 라이브러리
-* 서버 엔진 - node.js
-* 웹 프레임워크 - express.js
-* js ES6 문법 컴파일 - Babel 
 
-* 데이터베이스 - MongoDB
-* 미디어 저장소 - AWS S3 Bucket
-* HTML 템프릿 엔진 - pug
+## 주소: https://wetube-hyeongjun.herokuapp.com/
+
+## 사용 라이브러리
+
+- js 런타임 - node.js
+- 웹 프레임워크 - express.js
+- js ES6 문법 컴파일 - Babel
+
+- 데이터베이스 - MongoDB
+- 미디어 저장소 - AWS S3 Bucket
+- HTML 템프릿 엔진 - pug
+
 ---
+
 ### api 설계
+
 / -> Home <br>
 /join -> Join <br>
 /login -> Login <br>
