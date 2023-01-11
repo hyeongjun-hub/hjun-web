@@ -1,7 +1,7 @@
 {
   "name": "wetube",
   "version": "1.0.0",
-  "description": "The best way to watch a videos.",
+  "description": "Community & noticeboard wep page with Youtube design.",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/hyeongjun-hub/wertube-reloaded.git"
