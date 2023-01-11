@@ -2,6 +2,9 @@
   "name": "wetube",
   "version": "1.0.0",
   "description": "Community & noticeboard wep page with Youtube design.",
+  "engines": {
+    "node": "16.x"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/hyeongjun-hub/wetube-reloaded.git"
