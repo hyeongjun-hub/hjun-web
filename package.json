@@ -4,7 +4,7 @@
   "description": "Community & noticeboard wep page with Youtube design.",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/hyeongjun-hub/wertube-reloaded.git"
+    "url": "git+https://github.com/hyeongjun-hub/wetube-reloaded.git"
   },
   "scripts": {
     "start": "node build/init.js",
